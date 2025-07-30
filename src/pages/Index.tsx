@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 
@@ -31,7 +30,7 @@ const Index = () => {
     <div className="min-h-screen bg-white">
       {/* Header */}
       <header className="text-center py-12 border-b border-gray-200">
-        <h1 className="text-3xl font-light tracking-[0.2em] mb-8">PHOTOGRAPHER</h1>
+        <h1 className="text-3xl font-light tracking-[0.2em] mb-8">MAXWELL ANDOH</h1>
         
         {/* Navigation */}
         <nav className="flex justify-center space-x-12">
@@ -180,20 +179,20 @@ const AboutSection = () => {
             </div>
 
             <div>
-              <h3 className="text-xl font-light tracking-wide mb-4">Contact</h3>
+              <h3 className="text-xl font-light tracking-wide mb-4">Enquiries</h3>
               <div className="space-y-2 text-gray-600">
-                <p>hello@photographer.com</p>
+                <a href="" className="block hover:text-gray-800 transition-colors">hello@photographer.com</a>
                 <p>+1 (555) 123-4567</p>
                 <p>Available for commissions worldwide</p>
               </div>
             </div>
 
             <div>
-              <h3 className="text-xl font-light tracking-wide mb-4">Recognition</h3>
+              <h3 className="text-xl font-light tracking-wide mb-4">Socials</h3>
               <div className="space-y-2 text-gray-600 text-sm">
-                <p>• Photography Award 2023</p>
-                <p>• Featured in Contemporary Photography</p>
-                <p>• Solo Exhibition: Urban Stories, 2022</p>
+                <a href="" className="block hover:text-gray-800 transition-colors">• Instagram</a>
+                <a href="" className="block hover:text-gray-800 transition-colors">• Twitter</a>
+                <a href="" className="block hover:text-gray-800 transition-colors">• LinkedIn</a>
               </div>
             </div>
           </div>
