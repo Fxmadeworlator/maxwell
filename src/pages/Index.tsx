@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 
@@ -58,12 +59,36 @@ const Index = () => {
 
 const PortraitsSection = () => {
   const images = [
-    { id: 1, title: "Portrait Study I" },
-    { id: 2, title: "Portrait Study II" },
-    { id: 3, title: "Portrait Study III" },
-    { id: 4, title: "Portrait Study IV" },
-    { id: 5, title: "Portrait Study V" },
-    { id: 6, title: "Portrait Study VI" },
+    { 
+      id: 1, 
+      src: "/lovable-uploads/15059ab6-8266-45d5-b88b-312ccb05c1a7.png",
+      title: "Studio Portrait I" 
+    },
+    { 
+      id: 2, 
+      src: "/lovable-uploads/a447fd4c-084f-40ed-b666-e920bd3595ef.png",
+      title: "Studio Portrait II" 
+    },
+    { 
+      id: 3, 
+      src: "/lovable-uploads/9e109dd0-b37d-4a63-9f4c-07d6c37f7b24.png",
+      title: "Studio Portrait III" 
+    },
+    { 
+      id: 4, 
+      src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png",
+      title: "Fashion Portrait I" 
+    },
+    { 
+      id: 5, 
+      src: "/lovable-uploads/1aa6af43-e4ab-46b0-8838-2dc30838e4ea.png",
+      title: "Fashion Portrait II" 
+    },
+    { 
+      id: 6, 
+      src: "/lovable-uploads/2b94da22-7da5-4ce5-9007-92f208a95415.png",
+      title: "Fashion Portrait III" 
+    },
   ];
 
   return (
@@ -73,9 +98,11 @@ const PortraitsSection = () => {
           {images.map((image) => (
             <div key={image.id} className="group cursor-pointer">
               <div className="aspect-[3/4] bg-gray-100 image-hover overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                  <span className="text-gray-500 text-sm">{image.title}</span>
-                </div>
+                <img 
+                  src={image.src} 
+                  alt={image.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
             </div>
           ))}
@@ -87,10 +114,30 @@ const PortraitsSection = () => {
 
 const CommissionsSection = () => {
   const projects = [
-    { id: 1, title: "Corporate Headshots", client: "Tech Company" },
-    { id: 2, title: "Wedding Collection", client: "Private Client" },
-    { id: 3, title: "Brand Campaign", client: "Fashion Brand" },
-    { id: 4, title: "Editorial Shoot", client: "Magazine" },
+    { 
+      id: 1, 
+      title: "Studio Portraits", 
+      client: "Private Client",
+      src: "/lovable-uploads/15059ab6-8266-45d5-b88b-312ccb05c1a7.png"
+    },
+    { 
+      id: 2, 
+      title: "Fashion Editorial", 
+      client: "Fashion Brand",
+      src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png"
+    },
+    { 
+      id: 3, 
+      title: "Creative Portraits", 
+      client: "Art Direction",
+      src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png"
+    },
+    { 
+      id: 4, 
+      title: "Artistic Series", 
+      client: "Gallery Commission",
+      src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png"
+    },
   ];
 
   return (
@@ -100,9 +147,11 @@ const CommissionsSection = () => {
           {projects.map((project) => (
             <div key={project.id} className="group cursor-pointer">
               <div className="aspect-[4/3] bg-gray-100 image-hover overflow-hidden mb-4">
-                <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                  <span className="text-gray-500 text-sm">{project.title}</span>
-                </div>
+                <img 
+                  src={project.src} 
+                  alt={project.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="text-center">
                 <h3 className="text-lg font-light mb-1">{project.title}</h3>
@@ -118,9 +167,24 @@ const CommissionsSection = () => {
 
 const DocumentarySection = () => {
   const series = [
-    { id: 1, title: "Street Life", description: "Urban narratives captured in black and white" },
-    { id: 2, title: "Cultural Heritage", description: "Preserving traditions through photography" },
-    { id: 3, title: "Social Moments", description: "Authentic human connections" },
+    { 
+      id: 1, 
+      title: "Portrait Studies", 
+      description: "Contemporary portraiture exploring identity and expression",
+      src: "/lovable-uploads/9c28429f-1037-4299-8c7d-d403a1a7dd61.png"
+    },
+    { 
+      id: 2, 
+      title: "Light & Shadow", 
+      description: "Dramatic lighting techniques in portrait photography",
+      src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png"
+    },
+    { 
+      id: 3, 
+      title: "Urban Portraits", 
+      description: "Street photography meets studio aesthetics",
+      src: "/lovable-uploads/a447fd4c-084f-40ed-b666-e920bd3595ef.png"
+    },
   ];
 
   return (
@@ -130,9 +194,11 @@ const DocumentarySection = () => {
           {series.map((item) => (
             <div key={item.id} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="aspect-[5/3] bg-gray-100 image-hover overflow-hidden">
-                <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                  <span className="text-gray-500 text-sm">{item.title}</span>
-                </div>
+                <img 
+                  src={item.src} 
+                  alt={item.title}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="space-y-4">
                 <h3 className="text-2xl font-light tracking-wide">{item.title}</h3>
@@ -156,9 +222,11 @@ const AboutSection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div className="space-y-8">
             <div className="aspect-[3/4] bg-gray-100 image-hover overflow-hidden">
-              <div className="w-full h-full bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
-                <span className="text-gray-500 text-sm">Self Portrait</span>
-              </div>
+              <img 
+                src="/lovable-uploads/9c28429f-1037-4299-8c7d-d403a1a7dd61.png" 
+                alt="Self Portrait"
+                className="w-full h-full object-cover"
+              />
             </div>
           </div>
           
