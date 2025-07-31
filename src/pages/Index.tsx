@@ -1,6 +1,7 @@
-
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
+import ImageGallery from "@/components/ImageGallery";
+import AlbumView from "@/components/AlbumView";
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState('portraits');
@@ -58,6 +59,9 @@ const Index = () => {
 };
 
 const PortraitsSection = () => {
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
   const images = [
     { 
       id: 1, 
@@ -91,12 +95,33 @@ const PortraitsSection = () => {
     },
   ];
 
+  const openGallery = (index: number) => {
+    setCurrentImageIndex(index);
+    setGalleryOpen(true);
+  };
+
+  const nextImage = () => {
+    if (currentImageIndex < images.length - 1) {
+      setCurrentImageIndex(currentImageIndex + 1);
+    }
+  };
+
+  const previousImage = () => {
+    if (currentImageIndex > 0) {
+      setCurrentImageIndex(currentImageIndex - 1);
+    }
+  };
+
   return (
     <section className="py-16 px-8">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {images.map((image) => (
-            <div key={image.id} className="group cursor-pointer">
+          {images.map((image, index) => (
+            <div 
+              key={image.id} 
+              className="group cursor-pointer"
+              onClick={() => openGallery(index)}
+            >
               <div className="aspect-[3/4] bg-gray-100 image-hover overflow-hidden">
                 <img 
                   src={image.src} 
@@ -108,54 +133,91 @@ const PortraitsSection = () => {
           ))}
         </div>
       </div>
+
+      <ImageGallery
+        images={images}
+        currentIndex={currentImageIndex}
+        isOpen={galleryOpen}
+        onClose={() => setGalleryOpen(false)}
+        onNext={nextImage}
+        onPrevious={previousImage}
+      />
     </section>
   );
 };
 
 const CommissionsSection = () => {
-  const projects = [
+  const [selectedAlbum, setSelectedAlbum] = useState(null);
+  
+  const albums = [
     { 
       id: 1, 
       title: "Studio Portraits", 
       client: "Private Client",
-      src: "/lovable-uploads/15059ab6-8266-45d5-b88b-312ccb05c1a7.png"
+      src: "/lovable-uploads/15059ab6-8266-45d5-b88b-312ccb05c1a7.png",
+      images: [
+        { id: 1, src: "/lovable-uploads/15059ab6-8266-45d5-b88b-312ccb05c1a7.png", title: "Studio Portrait 1" },
+        { id: 2, src: "/lovable-uploads/a447fd4c-084f-40ed-b666-e920bd3595ef.png", title: "Studio Portrait 2" },
+        { id: 3, src: "/lovable-uploads/9e109dd0-b37d-4a63-9f4c-07d6c37f7b24.png", title: "Studio Portrait 3" },
+      ]
     },
     { 
       id: 2, 
       title: "Fashion Editorial", 
       client: "Fashion Brand",
-      src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png"
+      src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png",
+      images: [
+        { id: 4, src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png", title: "Fashion Portrait 1" },
+        { id: 5, src: "/lovable-uploads/1aa6af43-e4ab-46b0-8838-2dc30838e4ea.png", title: "Fashion Portrait 2" },
+        { id: 6, src: "/lovable-uploads/2b94da22-7da5-4ce5-9007-92f208a95415.png", title: "Fashion Portrait 3" },
+      ]
     },
     { 
       id: 3, 
       title: "Creative Portraits", 
       client: "Art Direction",
-      src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png"
+      src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png",
+      images: [
+        { id: 7, src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png", title: "Creative Portrait 1" },
+        { id: 8, src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png", title: "Creative Portrait 2" },
+      ]
     },
     { 
       id: 4, 
       title: "Artistic Series", 
       client: "Gallery Commission",
-      src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png"
+      src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png",
+      images: [
+        { id: 9, src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png", title: "Artistic 1" },
+        { id: 10, src: "/lovable-uploads/9c28429f-1037-4299-8c7d-d403a1a7dd61.png", title: "Artistic 2" },
+      ]
     },
   ];
+
+  if (selectedAlbum) {
+    return <AlbumView album={selectedAlbum} onBack={() => setSelectedAlbum(null)} />;
+  }
 
   return (
     <section className="py-16 px-8">
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {projects.map((project) => (
-            <div key={project.id} className="group cursor-pointer">
+          {albums.map((album) => (
+            <div 
+              key={album.id} 
+              className="group cursor-pointer"
+              onClick={() => setSelectedAlbum(album)}
+            >
               <div className="aspect-[4/3] bg-gray-100 image-hover overflow-hidden mb-4">
                 <img 
-                  src={project.src} 
-                  alt={project.title}
+                  src={album.src} 
+                  alt={album.title}
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="text-center">
-                <h3 className="text-lg font-light mb-1">{project.title}</h3>
-                <p className="text-gray-500 text-sm tracking-wide">{project.client}</p>
+                <h3 className="text-lg font-light mb-1">{album.title}</h3>
+                <p className="text-gray-500 text-sm tracking-wide">{album.client}</p>
               </div>
             </div>
           ))}
@@ -166,26 +228,47 @@ const CommissionsSection = () => {
 };
 
 const DocumentarySection = () => {
+  const [selectedSeries, setSelectedSeries] = useState(null);
+  
   const series = [
     { 
       id: 1, 
       title: "Portrait Studies", 
       description: "Contemporary portraiture exploring identity and expression",
-      src: "/lovable-uploads/9c28429f-1037-4299-8c7d-d403a1a7dd61.png"
+      src: "/lovable-uploads/9c28429f-1037-4299-8c7d-d403a1a7dd61.png",
+      images: [
+        { id: 1, src: "/lovable-uploads/9c28429f-1037-4299-8c7d-d403a1a7dd61.png", title: "Portrait Study 1" },
+        { id: 2, src: "/lovable-uploads/15059ab6-8266-45d5-b88b-312ccb05c1a7.png", title: "Portrait Study 2" },
+        { id: 3, src: "/lovable-uploads/a447fd4c-084f-40ed-b666-e920bd3595ef.png", title: "Portrait Study 3" },
+      ]
     },
     { 
       id: 2, 
       title: "Light & Shadow", 
       description: "Dramatic lighting techniques in portrait photography",
-      src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png"
+      src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png",
+      images: [
+        { id: 4, src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png", title: "Light Study 1" },
+        { id: 5, src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png", title: "Light Study 2" },
+        { id: 6, src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png", title: "Light Study 3" },
+      ]
     },
     { 
       id: 3, 
       title: "Urban Portraits", 
       description: "Street photography meets studio aesthetics",
-      src: "/lovable-uploads/a447fd4c-084f-40ed-b666-e920bd3595ef.png"
+      src: "/lovable-uploads/a447fd4c-084f-40ed-b666-e920bd3595ef.png",
+      images: [
+        { id: 7, src: "/lovable-uploads/a447fd4c-084f-40ed-b666-e920bd3595ef.png", title: "Urban Portrait 1" },
+        { id: 8, src: "/lovable-uploads/2b94da22-7da5-4ce5-9007-92f208a95415.png", title: "Urban Portrait 2" },
+        { id: 9, src: "/lovable-uploads/1aa6af43-e4ab-46b0-8838-2dc30838e4ea.png", title: "Urban Portrait 3" },
+      ]
     },
   ];
+
+  if (selectedSeries) {
+    return <AlbumView album={selectedSeries} onBack={() => setSelectedSeries(null)} />;
+  }
 
   return (
     <section className="py-16 px-8">
@@ -203,7 +286,11 @@ const DocumentarySection = () => {
               <div className="space-y-4">
                 <h3 className="text-2xl font-light tracking-wide">{item.title}</h3>
                 <p className="text-gray-600 leading-relaxed">{item.description}</p>
-                <Button variant="outline" className="mt-4 bg-transparent border-black text-black hover:bg-black hover:text-white">
+                <Button 
+                  variant="outline" 
+                  className="mt-4 bg-transparent border-black text-black hover:bg-black hover:text-white"
+                  onClick={() => setSelectedSeries(item)}
+                >
                   View Series
                 </Button>
               </div>
