@@ -72,11 +72,11 @@ const AlbumView = ({ album, onBack }: AlbumViewProps) => {
               className="group cursor-pointer"
               onClick={() => openGallery(index)}
             >
-              <div className="aspect-[3/4] bg-gray-100 image-hover overflow-hidden">
+              <div className="aspect-[3/4] bg-gray-100 image-hover overflow-hidden rounded-lg">
                 <img 
                   src={image.src} 
                   alt={image.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-lg"
                 />
               </div>
             </div>

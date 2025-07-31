@@ -1,13 +1,14 @@
+
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import ImageGallery from "@/components/ImageGallery";
 import AlbumView from "@/components/AlbumView";
 
 const Index = () => {
-  const [activeTab, setActiveTab] = useState('studio');
+  const [activeTab, setActiveTab] = useState('portraits');
 
   const tabs = [
-    { id: 'studio', label: 'STUDIO WORK' },
+    { id: 'portraits', label: 'PORTRAITS' },
     { id: 'clients', label: 'CLIENT PROJECTS' },
     { id: 'stories', label: 'VISUAL STORIES' },
     { id: 'info', label: 'INFO + CONTACT' },
@@ -15,8 +16,8 @@ const Index = () => {
 
   const renderContent = () => {
     switch (activeTab) {
-      case 'studio':
-        return <StudioSection />;
+      case 'portraits':
+        return <PortraitsSection />;
       case 'clients':
         return <ClientsSection />;
       case 'stories':
@@ -24,7 +25,7 @@ const Index = () => {
       case 'info':
         return <InfoSection />;
       default:
-        return <StudioSection />;
+        return <PortraitsSection />;
     }
   };
 
@@ -65,40 +66,35 @@ const Index = () => {
   );
 };
 
-const StudioSection = () => {
+const PortraitsSection = () => {
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   const images = [
     { 
       id: 1, 
-      src: "/lovable-uploads/15059ab6-8266-45d5-b88b-312ccb05c1a7.png",
-      title: "Studio Portrait I" 
+      src: "/lovable-uploads/d2b2498b-fc23-4a42-9c55-405d99785373.png",
+      title: "Portrait I" 
     },
     { 
       id: 2, 
-      src: "/lovable-uploads/a447fd4c-084f-40ed-b666-e920bd3595ef.png",
-      title: "Studio Portrait II" 
+      src: "/lovable-uploads/70a06f4b-e71a-4959-adb2-059fe46a1972.png",
+      title: "Portrait II" 
     },
     { 
       id: 3, 
-      src: "/lovable-uploads/9e109dd0-b37d-4a63-9f4c-07d6c37f7b24.png",
-      title: "Studio Portrait III" 
+      src: "/lovable-uploads/1a5c3f56-b376-4b15-8422-d9d670ee4ce0.png",
+      title: "Portrait III" 
     },
     { 
       id: 4, 
-      src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png",
-      title: "Fashion Portrait I" 
+      src: "/lovable-uploads/b348d014-a837-4f08-8ba4-a0291ee68ca4.png",
+      title: "Portrait IV" 
     },
     { 
       id: 5, 
-      src: "/lovable-uploads/1aa6af43-e4ab-46b0-8838-2dc30838e4ea.png",
-      title: "Fashion Portrait II" 
-    },
-    { 
-      id: 6, 
-      src: "/lovable-uploads/2b94da22-7da5-4ce5-9007-92f208a95415.png",
-      title: "Fashion Portrait III" 
+      src: "/lovable-uploads/a385cd13-20f1-4bfa-8cc5-117599877ad1.png",
+      title: "Portrait V" 
     },
   ];
 
@@ -129,11 +125,11 @@ const StudioSection = () => {
               className="group cursor-pointer"
               onClick={() => openGallery(index)}
             >
-              <div className="aspect-[3/4] bg-gray-100 image-hover overflow-hidden">
+              <div className="aspect-[3/4] bg-gray-100 image-hover overflow-hidden rounded-lg">
                 <img 
                   src={image.src} 
                   alt={image.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-lg"
                 />
               </div>
             </div>
@@ -215,11 +211,11 @@ const ClientsSection = () => {
               className="group cursor-pointer"
               onClick={() => setSelectedAlbum(album)}
             >
-              <div className="aspect-[4/3] bg-gray-100 image-hover overflow-hidden mb-4">
+              <div className="aspect-[4/3] bg-gray-100 image-hover overflow-hidden mb-4 rounded-lg">
                 <img 
                   src={album.src} 
                   alt={album.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-lg"
                 />
               </div>
               <div className="text-center">
@@ -283,11 +279,11 @@ const StoriesSection = () => {
         <div className="space-y-16">
           {series.map((item) => (
             <div key={item.id} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <div className="aspect-[5/3] bg-gray-100 image-hover overflow-hidden">
+              <div className="aspect-[5/3] bg-gray-100 image-hover overflow-hidden rounded-lg">
                 <img 
                   src={item.src} 
                   alt={item.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-lg"
                 />
               </div>
               <div className="space-y-4">
@@ -315,11 +311,11 @@ const InfoSection = () => {
       <div className="max-w-4xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <div className="space-y-8">
-            <div className="aspect-[3/4] bg-gray-100 image-hover overflow-hidden">
+            <div className="aspect-[3/4] bg-gray-100 image-hover overflow-hidden rounded-lg">
               <img 
                 src="/lovable-uploads/9c28429f-1037-4299-8c7d-d403a1a7dd61.png" 
                 alt="Maxwell Andoh"
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-lg"
               />
             </div>
           </div>
