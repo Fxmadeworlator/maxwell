@@ -41,13 +41,16 @@ const Index = () => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`text-sm font-light tracking-wider transition-all duration-300 hover:text-gray-600 ${
+              className={`text-sm font-light tracking-wider transition-all duration-300 hover:text-gray-600 relative ${
                 activeTab === tab.id 
-                  ? 'text-black border-b-2 border-black pb-1' 
-                  : 'text-gray-500 hover:border-b-2 hover:border-gray-300 pb-1'
+                  ? 'text-black' 
+                  : 'text-gray-500 hover:text-gray-800'
               }`}
             >
               {tab.label}
+              <div className={`absolute bottom-[-8px] left-0 w-full h-0.5 bg-black transform origin-left transition-all duration-300 ${
+                activeTab === tab.id ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+              }`} />
             </button>
           ))}
         </nav>
@@ -155,44 +158,49 @@ const ClientsSection = () => {
   const albums = [
     { 
       id: 1, 
-      title: "Creative Portraits", 
-      client: "Personal Project",
-      src: "/lovable-uploads/15059ab6-8266-45d5-b88b-312ccb05c1a7.png",
+      title: "Nova's", 
+      client: "Fashion Brand",
+      src: "/lovable-uploads/2cb8f8fa-73d5-4fdf-9073-c8b1c5a11bf0.png",
       images: [
-        { id: 1, src: "/lovable-uploads/15059ab6-8266-45d5-b88b-312ccb05c1a7.png", title: "Creative Portrait 1" },
-        { id: 2, src: "/lovable-uploads/a447fd4c-084f-40ed-b666-e920bd3595ef.png", title: "Creative Portrait 2" },
-        { id: 3, src: "/lovable-uploads/9e109dd0-b37d-4a63-9f4c-07d6c37f7b24.png", title: "Creative Portrait 3" },
+        { id: 1, src: "/lovable-uploads/2cb8f8fa-73d5-4fdf-9073-c8b1c5a11bf0.png", title: "Nova's Product Collection" },
+        { id: 2, src: "/lovable-uploads/e3942921-08e4-42e7-818d-57b55b2edcda.png", title: "Nova's Portrait 1" },
+        { id: 3, src: "/lovable-uploads/cf23df2c-e261-4d59-b972-b6f7ded3049d.png", title: "Nova's Portrait 2" },
+        { id: 4, src: "/lovable-uploads/aa081a12-6fbe-40d8-a727-67c92f3f90c9.png", title: "Nova's Portrait 3" },
+        { id: 5, src: "/lovable-uploads/23c3a8bf-43da-4427-aa52-d9536c8df310.png", title: "Nova's Portrait 4" },
+        { id: 6, src: "/lovable-uploads/86fccd73-3e96-45ac-b794-0814e20bddb6.png", title: "Nova's Portrait 5" },
+        { id: 7, src: "/lovable-uploads/49e5f23e-61cf-4719-89cd-17dfdb6d71f1.png", title: "Nova's Product Detail" },
       ]
     },
     { 
       id: 2, 
-      title: "Fashion Series", 
-      client: "Style Magazine",
-      src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png",
+      title: "Creative Portraits", 
+      client: "Personal Project",
+      src: "/lovable-uploads/15059ab6-8266-45d5-b88b-312ccb05c1a7.png",
       images: [
-        { id: 4, src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png", title: "Fashion Series 1" },
-        { id: 5, src: "/lovable-uploads/1aa6af43-e4ab-46b0-8838-2dc30838e4ea.png", title: "Fashion Series 2" },
-        { id: 6, src: "/lovable-uploads/2b94da22-7da5-4ce5-9007-92f208a95415.png", title: "Fashion Series 3" },
+        { id: 8, src: "/lovable-uploads/15059ab6-8266-45d5-b88b-312ccb05c1a7.png", title: "Creative Portrait 1" },
+        { id: 9, src: "/lovable-uploads/a447fd4c-084f-40ed-b666-e920bd3595ef.png", title: "Creative Portrait 2" },
+        { id: 10, src: "/lovable-uploads/9e109dd0-b37d-4a63-9f4c-07d6c37f7b24.png", title: "Creative Portrait 3" },
       ]
     },
     { 
       id: 3, 
-      title: "Professional Headshots", 
-      client: "Corporate Client",
-      src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png",
+      title: "Fashion Series", 
+      client: "Style Magazine",
+      src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png",
       images: [
-        { id: 7, src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png", title: "Professional Headshot 1" },
-        { id: 8, src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png", title: "Professional Headshot 2" },
+        { id: 11, src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png", title: "Fashion Series 1" },
+        { id: 12, src: "/lovable-uploads/1aa6af43-e4ab-46b0-8838-2dc30838e4ea.png", title: "Fashion Series 2" },
+        { id: 13, src: "/lovable-uploads/2b94da22-7da5-4ce5-9007-92f208a95415.png", title: "Fashion Series 3" },
       ]
     },
     { 
       id: 4, 
-      title: "Artistic Vision", 
-      client: "Gallery Exhibition",
-      src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png",
+      title: "Professional Headshots", 
+      client: "Corporate Client",
+      src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png",
       images: [
-        { id: 9, src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png", title: "Artistic Vision 1" },
-        { id: 10, src: "/lovable-uploads/9c28429f-1037-4299-8c7d-d403a1a7dd61.png", title: "Artistic Vision 2" },
+        { id: 14, src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png", title: "Professional Headshot 1" },
+        { id: 15, src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png", title: "Professional Headshot 2" },
       ]
     },
   ];
