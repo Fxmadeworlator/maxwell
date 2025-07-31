@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import ImageGallery from "@/components/ImageGallery";
@@ -41,7 +40,7 @@ const Index = () => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`text-sm font-light tracking-wider transition-all duration-300 hover:text-gray-600 relative ${
+              className={`text-sm font-light tracking-wider transition-all duration-300 hover:text-gray-600 relative group ${
                 activeTab === tab.id 
                   ? 'text-black' 
                   : 'text-gray-500 hover:text-gray-800'
@@ -49,7 +48,7 @@ const Index = () => {
             >
               {tab.label}
               <div className={`absolute bottom-[-8px] left-0 w-full h-0.5 bg-black transform origin-left transition-all duration-300 ${
-                activeTab === tab.id ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-100'
+                activeTab === tab.id ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-50'
               }`} />
             </button>
           ))}
@@ -98,6 +97,16 @@ const PortraitsSection = () => {
       id: 5, 
       src: "/lovable-uploads/a385cd13-20f1-4bfa-8cc5-117599877ad1.png",
       title: "Portrait V" 
+    },
+    { 
+      id: 6, 
+      src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png",
+      title: "Portrait VI" 
+    },
+    { 
+      id: 7, 
+      src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png",
+      title: "Portrait VII" 
     },
   ];
 
