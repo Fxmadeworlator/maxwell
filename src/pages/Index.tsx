@@ -4,27 +4,27 @@ import ImageGallery from "@/components/ImageGallery";
 import AlbumView from "@/components/AlbumView";
 
 const Index = () => {
-  const [activeTab, setActiveTab] = useState('portraits');
+  const [activeTab, setActiveTab] = useState('studio');
 
   const tabs = [
-    { id: 'portraits', label: 'PORTRAITS' },
-    { id: 'commissions', label: 'COMMISSIONS' },
-    { id: 'documentary', label: 'DOCUMENTARY' },
-    { id: 'about', label: 'ABOUT + CONTACT' },
+    { id: 'studio', label: 'STUDIO WORK' },
+    { id: 'clients', label: 'CLIENT PROJECTS' },
+    { id: 'stories', label: 'VISUAL STORIES' },
+    { id: 'info', label: 'INFO + CONTACT' },
   ];
 
   const renderContent = () => {
     switch (activeTab) {
-      case 'portraits':
-        return <PortraitsSection />;
-      case 'commissions':
-        return <CommissionsSection />;
-      case 'documentary':
-        return <DocumentarySection />;
-      case 'about':
-        return <AboutSection />;
+      case 'studio':
+        return <StudioSection />;
+      case 'clients':
+        return <ClientsSection />;
+      case 'stories':
+        return <StoriesSection />;
+      case 'info':
+        return <InfoSection />;
       default:
-        return <PortraitsSection />;
+        return <StudioSection />;
     }
   };
 
@@ -40,8 +40,10 @@ const Index = () => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`text-sm font-light tracking-wider transition-colors hover:text-gray-600 ${
-                activeTab === tab.id ? 'text-black border-b border-black pb-1' : 'text-gray-500'
+              className={`text-sm font-light tracking-wider transition-all duration-300 hover:text-gray-600 ${
+                activeTab === tab.id 
+                  ? 'text-black border-b-2 border-black pb-1' 
+                  : 'text-gray-500 hover:border-b-2 hover:border-gray-300 pb-1'
               }`}
             >
               {tab.label}
@@ -54,11 +56,16 @@ const Index = () => {
       <main className="animate-fade-in-up">
         {renderContent()}
       </main>
+      
+      {/* Footer */}
+      <footer className="text-center py-8 text-gray-500 text-sm border-t border-gray-200">
+        <p>© 2025 Maxwell Andoh. All rights reserved.</p>
+      </footer>
     </div>
   );
 };
 
-const PortraitsSection = () => {
+const StudioSection = () => {
   const [galleryOpen, setGalleryOpen] = useState(false);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
@@ -146,50 +153,50 @@ const PortraitsSection = () => {
   );
 };
 
-const CommissionsSection = () => {
+const ClientsSection = () => {
   const [selectedAlbum, setSelectedAlbum] = useState(null);
   
   const albums = [
     { 
       id: 1, 
-      title: "Studio Portraits", 
-      client: "Private Client",
+      title: "Creative Portraits", 
+      client: "Personal Project",
       src: "/lovable-uploads/15059ab6-8266-45d5-b88b-312ccb05c1a7.png",
       images: [
-        { id: 1, src: "/lovable-uploads/15059ab6-8266-45d5-b88b-312ccb05c1a7.png", title: "Studio Portrait 1" },
-        { id: 2, src: "/lovable-uploads/a447fd4c-084f-40ed-b666-e920bd3595ef.png", title: "Studio Portrait 2" },
-        { id: 3, src: "/lovable-uploads/9e109dd0-b37d-4a63-9f4c-07d6c37f7b24.png", title: "Studio Portrait 3" },
+        { id: 1, src: "/lovable-uploads/15059ab6-8266-45d5-b88b-312ccb05c1a7.png", title: "Creative Portrait 1" },
+        { id: 2, src: "/lovable-uploads/a447fd4c-084f-40ed-b666-e920bd3595ef.png", title: "Creative Portrait 2" },
+        { id: 3, src: "/lovable-uploads/9e109dd0-b37d-4a63-9f4c-07d6c37f7b24.png", title: "Creative Portrait 3" },
       ]
     },
     { 
       id: 2, 
-      title: "Fashion Editorial", 
-      client: "Fashion Brand",
+      title: "Fashion Series", 
+      client: "Style Magazine",
       src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png",
       images: [
-        { id: 4, src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png", title: "Fashion Portrait 1" },
-        { id: 5, src: "/lovable-uploads/1aa6af43-e4ab-46b0-8838-2dc30838e4ea.png", title: "Fashion Portrait 2" },
-        { id: 6, src: "/lovable-uploads/2b94da22-7da5-4ce5-9007-92f208a95415.png", title: "Fashion Portrait 3" },
+        { id: 4, src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png", title: "Fashion Series 1" },
+        { id: 5, src: "/lovable-uploads/1aa6af43-e4ab-46b0-8838-2dc30838e4ea.png", title: "Fashion Series 2" },
+        { id: 6, src: "/lovable-uploads/2b94da22-7da5-4ce5-9007-92f208a95415.png", title: "Fashion Series 3" },
       ]
     },
     { 
       id: 3, 
-      title: "Creative Portraits", 
-      client: "Art Direction",
+      title: "Professional Headshots", 
+      client: "Corporate Client",
       src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png",
       images: [
-        { id: 7, src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png", title: "Creative Portrait 1" },
-        { id: 8, src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png", title: "Creative Portrait 2" },
+        { id: 7, src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png", title: "Professional Headshot 1" },
+        { id: 8, src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png", title: "Professional Headshot 2" },
       ]
     },
     { 
       id: 4, 
-      title: "Artistic Series", 
-      client: "Gallery Commission",
+      title: "Artistic Vision", 
+      client: "Gallery Exhibition",
       src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png",
       images: [
-        { id: 9, src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png", title: "Artistic 1" },
-        { id: 10, src: "/lovable-uploads/9c28429f-1037-4299-8c7d-d403a1a7dd61.png", title: "Artistic 2" },
+        { id: 9, src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png", title: "Artistic Vision 1" },
+        { id: 10, src: "/lovable-uploads/9c28429f-1037-4299-8c7d-d403a1a7dd61.png", title: "Artistic Vision 2" },
       ]
     },
   ];
@@ -227,41 +234,41 @@ const CommissionsSection = () => {
   );
 };
 
-const DocumentarySection = () => {
+const StoriesSection = () => {
   const [selectedSeries, setSelectedSeries] = useState(null);
   
   const series = [
     { 
       id: 1, 
-      title: "Portrait Studies", 
-      description: "Contemporary portraiture exploring identity and expression",
+      title: "Identity & Expression", 
+      description: "Contemporary portraiture exploring personal identity and creative expression",
       src: "/lovable-uploads/9c28429f-1037-4299-8c7d-d403a1a7dd61.png",
       images: [
-        { id: 1, src: "/lovable-uploads/9c28429f-1037-4299-8c7d-d403a1a7dd61.png", title: "Portrait Study 1" },
-        { id: 2, src: "/lovable-uploads/15059ab6-8266-45d5-b88b-312ccb05c1a7.png", title: "Portrait Study 2" },
-        { id: 3, src: "/lovable-uploads/a447fd4c-084f-40ed-b666-e920bd3595ef.png", title: "Portrait Study 3" },
+        { id: 1, src: "/lovable-uploads/9c28429f-1037-4299-8c7d-d403a1a7dd61.png", title: "Identity Study 1" },
+        { id: 2, src: "/lovable-uploads/15059ab6-8266-45d5-b88b-312ccb05c1a7.png", title: "Identity Study 2" },
+        { id: 3, src: "/lovable-uploads/a447fd4c-084f-40ed-b666-e920bd3595ef.png", title: "Identity Study 3" },
       ]
     },
     { 
       id: 2, 
-      title: "Light & Shadow", 
-      description: "Dramatic lighting techniques in portrait photography",
+      title: "Mood & Atmosphere", 
+      description: "Exploring dramatic lighting and atmospheric techniques in portrait photography",
       src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png",
       images: [
-        { id: 4, src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png", title: "Light Study 1" },
-        { id: 5, src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png", title: "Light Study 2" },
-        { id: 6, src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png", title: "Light Study 3" },
+        { id: 4, src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png", title: "Mood Study 1" },
+        { id: 5, src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png", title: "Mood Study 2" },
+        { id: 6, src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png", title: "Mood Study 3" },
       ]
     },
     { 
       id: 3, 
-      title: "Urban Portraits", 
-      description: "Street photography meets studio aesthetics",
+      title: "Character & Style", 
+      description: "Contemporary portraiture that captures personality and individual style",
       src: "/lovable-uploads/a447fd4c-084f-40ed-b666-e920bd3595ef.png",
       images: [
-        { id: 7, src: "/lovable-uploads/a447fd4c-084f-40ed-b666-e920bd3595ef.png", title: "Urban Portrait 1" },
-        { id: 8, src: "/lovable-uploads/2b94da22-7da5-4ce5-9007-92f208a95415.png", title: "Urban Portrait 2" },
-        { id: 9, src: "/lovable-uploads/1aa6af43-e4ab-46b0-8838-2dc30838e4ea.png", title: "Urban Portrait 3" },
+        { id: 7, src: "/lovable-uploads/a447fd4c-084f-40ed-b666-e920bd3595ef.png", title: "Character Study 1" },
+        { id: 8, src: "/lovable-uploads/2b94da22-7da5-4ce5-9007-92f208a95415.png", title: "Character Study 2" },
+        { id: 9, src: "/lovable-uploads/1aa6af43-e4ab-46b0-8838-2dc30838e4ea.png", title: "Character Study 3" },
       ]
     },
   ];
@@ -288,7 +295,7 @@ const DocumentarySection = () => {
                 <p className="text-gray-600 leading-relaxed">{item.description}</p>
                 <Button 
                   variant="outline" 
-                  className="mt-4 bg-transparent border-black text-black hover:bg-black hover:text-white"
+                  className="mt-4 bg-transparent border-black text-black hover:bg-black hover:text-white transition-colors duration-300"
                   onClick={() => setSelectedSeries(item)}
                 >
                   View Series
@@ -302,7 +309,7 @@ const DocumentarySection = () => {
   );
 };
 
-const AboutSection = () => {
+const InfoSection = () => {
   return (
     <section className="py-16 px-8">
       <div className="max-w-4xl mx-auto">
@@ -311,7 +318,7 @@ const AboutSection = () => {
             <div className="aspect-[3/4] bg-gray-100 image-hover overflow-hidden">
               <img 
                 src="/lovable-uploads/9c28429f-1037-4299-8c7d-d403a1a7dd61.png" 
-                alt="Self Portrait"
+                alt="Maxwell Andoh"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -322,7 +329,7 @@ const AboutSection = () => {
               <h2 className="text-2xl font-light tracking-wide mb-6">About</h2>
               <div className="space-y-4 text-gray-600 leading-relaxed">
                 <p>
-                  Photographer specializing in portraiture, documentary, and commissioned work. 
+                  Photographer specializing in portraiture, creative projects, and visual storytelling. 
                   Based between urban landscapes and cultural narratives, I capture authentic 
                   moments that tell compelling stories.
                 </p>
@@ -336,9 +343,9 @@ const AboutSection = () => {
             <div>
               <h3 className="text-xl font-light tracking-wide mb-4">Enquiries</h3>
               <div className="space-y-2 text-gray-600">
-                <a href="" className="block hover:text-gray-800 transition-colors">hello@photographer.com</a>
+                <a href="" className="block hover:text-gray-800 transition-colors">hello@maxwellandoh.com</a>
                 <p>+1 (555) 123-4567</p>
-                <p>Available for commissions worldwide</p>
+                <p>Available for projects worldwide</p>
               </div>
             </div>
 
