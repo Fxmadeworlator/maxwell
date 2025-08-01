@@ -330,7 +330,7 @@ const InfoSection = () => {
           <div className="space-y-8">
             <div className="aspect-[3/4] bg-gray-100 image-hover overflow-hidden rounded-lg">
               <img 
-                src="/lovable-uploads/9c28429f-1037-4299-8c7d-d403a1a7dd61.png" 
+                src="/lovable-uploads/9c4e2038-879a-4cae-b5de-8e2a36c52484.png" 
                 alt="Maxwell Andoh"
                 className="w-full h-full object-cover rounded-lg"
               />
@@ -356,8 +356,8 @@ const InfoSection = () => {
             <div>
               <h3 className="text-xl font-light tracking-wide mb-4">Enquiries</h3>
               <div className="space-y-2 text-gray-600">
-                <a href="" className="block hover:text-gray-800 transition-colors">hello@maxwellandoh.com</a>
-                <p>+1 (555) 123-4567</p>
+                <a href="mailto:hello@maxwellandoh.com" className="block hover:text-gray-800 transition-colors">hello@maxwellandoh.com</a>
+                <p>+233246368562</p>
                 <p>Available for projects worldwide</p>
               </div>
             </div>
@@ -365,9 +365,9 @@ const InfoSection = () => {
             <div>
               <h3 className="text-xl font-light tracking-wide mb-4">Socials</h3>
               <div className="space-y-2 text-gray-600 text-sm">
-                <a href="" className="block hover:text-gray-800 transition-colors">• Instagram</a>
-                <a href="" className="block hover:text-gray-800 transition-colors">• Twitter</a>
-                <a href="" className="block hover:text-gray-800 transition-colors">• LinkedIn</a>
+                <a href="https://www.instagram.com/maxxandohh/?hl=en" target="_blank" rel="noopener noreferrer" className="block hover:text-gray-800 transition-colors">• Instagram</a>
+                <a href="https://x.com/maxxandohh" target="_blank" rel="noopener noreferrer" className="block hover:text-gray-800 transition-colors">• Twitter</a>
+                <a href="#" className="block hover:text-gray-800 transition-colors">• LinkedIn</a>
               </div>
             </div>
           </div>
