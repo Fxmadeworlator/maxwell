@@ -31,22 +31,22 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="text-center py-12 border-b border-gray-200">
-        <h1 className="text-3xl font-light tracking-[0.2em] mb-8">MAXWELL ANDOH</h1>
+      <header className="text-center py-8 md:py-12 border-b border-gray-200 px-4">
+        <h1 className="text-2xl md:text-3xl font-light tracking-[0.2em] mb-6 md:mb-8">MAXWELL ANDOH</h1>
         
         {/* Navigation */}
-        <nav className="flex justify-center space-x-12">
+        <nav className="flex justify-center flex-wrap gap-4 md:gap-12">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`text-sm font-light tracking-wider transition-all duration-300 hover:text-gray-600 relative group ${
+              className={`text-xs md:text-sm font-light tracking-wider transition-all duration-300 hover:text-gray-600 relative group px-2 py-1 ${
                 activeTab === tab.id 
                   ? 'text-black' 
                   : 'text-gray-500 hover:text-gray-800'
               }`}
             >
-              {tab.label}
+              <span className="whitespace-nowrap">{tab.label}</span>
               <div className={`absolute bottom-[-8px] left-0 w-full h-0.5 bg-black transform origin-left transition-all duration-300 ${
                 activeTab === tab.id ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-50'
               }`} />
@@ -61,7 +61,7 @@ const Index = () => {
       </main>
       
       {/* Footer */}
-      <footer className="text-center py-8 text-gray-500 text-sm border-t border-gray-200">
+      <footer className="text-center py-6 md:py-8 text-gray-500 text-xs md:text-sm border-t border-gray-200 px-4">
         <p>© 2025 Maxwell Andoh. All rights reserved.</p>
       </footer>
     </div>
@@ -138,9 +138,9 @@ const PortraitsSection = () => {
   };
 
   return (
-    <section className="py-16 px-8">
+    <section className="py-8 md:py-16 px-4 md:px-8">
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           {images.map((image, index) => (
             <div 
               key={image.id} 
@@ -254,9 +254,9 @@ const ClientsSection = () => {
   }
 
   return (
-    <section className="py-16 px-8">
+    <section className="py-8 md:py-16 px-4 md:px-8">
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           {albums.map((album) => (
             <div 
               key={album.id} 
@@ -271,7 +271,7 @@ const ClientsSection = () => {
                 />
               </div>
               <div className="text-center">
-                <h3 className="text-lg font-light mb-1">{album.title}</h3>
+                <h3 className="text-base md:text-lg font-light mb-1">{album.title}</h3>
                 <p className="text-gray-500 text-sm tracking-wide">{album.client}</p>
               </div>
             </div>
@@ -326,11 +326,11 @@ const StoriesSection = () => {
   }
 
   return (
-    <section className="py-16 px-8">
+    <section className="py-8 md:py-16 px-4 md:px-8">
       <div className="max-w-6xl mx-auto">
-        <div className="space-y-16">
+        <div className="space-y-12 md:space-y-16">
           {series.map((item) => (
-            <div key={item.id} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div key={item.id} className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center">
               <div className="aspect-[5/3] bg-gray-100 image-hover overflow-hidden rounded-lg">
                 <img 
                   src={item.src} 
@@ -339,11 +339,11 @@ const StoriesSection = () => {
                 />
               </div>
               <div className="space-y-4">
-                <h3 className="text-2xl font-light tracking-wide">{item.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{item.description}</p>
+                <h3 className="text-xl md:text-2xl font-light tracking-wide">{item.title}</h3>
+                <p className="text-gray-600 leading-relaxed text-sm md:text-base">{item.description}</p>
                 <Button 
                   variant="outline" 
-                  className="mt-4 bg-transparent border-black text-black hover:bg-black hover:text-white transition-colors duration-300"
+                  className="mt-4 bg-transparent border-black text-black hover:bg-black hover:text-white transition-colors duration-300 text-sm md:text-base"
                   onClick={() => setSelectedSeries(item)}
                 >
                   View Series
@@ -359,9 +359,9 @@ const StoriesSection = () => {
 
 const InfoSection = () => {
   return (
-    <section className="py-16 px-8">
+    <section className="py-8 md:py-16 px-4 md:px-8">
       <div className="max-w-4xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16 items-start">
           <div className="space-y-8">
             <div className="aspect-[3/4] bg-gray-100 image-hover overflow-hidden rounded-lg">
               <img 
@@ -372,10 +372,10 @@ const InfoSection = () => {
             </div>
           </div>
           
-          <div className="space-y-8">
+          <div className="space-y-6 md:space-y-8">
             <div>
-              <h2 className="text-2xl font-light tracking-wide mb-6">About</h2>
-              <div className="space-y-4 text-gray-600 leading-relaxed">
+              <h2 className="text-xl md:text-2xl font-light tracking-wide mb-4 md:mb-6">About</h2>
+              <div className="space-y-4 text-gray-600 leading-relaxed text-sm md:text-base">
                 <p>
                   Photographer specializing in portraiture, creative projects, and visual storytelling. 
                   Based between urban landscapes and cultural narratives, I capture authentic 
@@ -389,8 +389,8 @@ const InfoSection = () => {
             </div>
 
             <div>
-              <h3 className="text-xl font-light tracking-wide mb-4">Enquiries</h3>
-              <div className="space-y-2 text-gray-600">
+              <h3 className="text-lg md:text-xl font-light tracking-wide mb-4">Enquiries</h3>
+              <div className="space-y-2 text-gray-600 text-sm md:text-base">
                 <a href="mailto:maxxandohh@gmail.com" className="block hover:text-gray-800 transition-colors">maxxandohh@gmail.com</a>
                 <p>+233246368562</p>
                 <p>Available for projects worldwide</p>
@@ -398,7 +398,7 @@ const InfoSection = () => {
             </div>
 
             <div>
-              <h3 className="text-xl font-light tracking-wide mb-4">Socials</h3>
+              <h3 className="text-lg md:text-xl font-light tracking-wide mb-4">Socials</h3>
               <div className="space-y-2 text-gray-600 text-sm">
                 <a href="https://www.instagram.com/maxxandohh/?hl=en" target="_blank" rel="noopener noreferrer" className="block hover:text-gray-800 transition-colors">• Instagram</a>
                 <a href="https://x.com/maxxandohh" target="_blank" rel="noopener noreferrer" className="block hover:text-gray-800 transition-colors">• Twitter</a>
