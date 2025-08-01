@@ -391,7 +391,7 @@ const InfoSection = () => {
             <div>
               <h3 className="text-xl font-light tracking-wide mb-4">Enquiries</h3>
               <div className="space-y-2 text-gray-600">
-                <a href="mailto:hello@maxwellandoh.com" className="block hover:text-gray-800 transition-colors">hello@maxwellandoh.com</a>
+                <a href="mailto:maxxandohh@gmail.com" className="block hover:text-gray-800 transition-colors">maxxandohh@gmail.com</a>
                 <p>+233246368562</p>
                 <p>Available for projects worldwide</p>
               </div>
@@ -402,7 +402,7 @@ const InfoSection = () => {
               <div className="space-y-2 text-gray-600 text-sm">
                 <a href="https://www.instagram.com/maxxandohh/?hl=en" target="_blank" rel="noopener noreferrer" className="block hover:text-gray-800 transition-colors">• Instagram</a>
                 <a href="https://x.com/maxxandohh" target="_blank" rel="noopener noreferrer" className="block hover:text-gray-800 transition-colors">• Twitter</a>
-                <a href="#" className="block hover:text-gray-800 transition-colors">• LinkedIn</a>
+                <a href="https://gh.linkedin.com/in/maxwell-andoh-94a255296" target="_blank" rel="noopener noreferrer" className="block hover:text-gray-800 transition-colors">• LinkedIn</a>
               </div>
             </div>
           </div>

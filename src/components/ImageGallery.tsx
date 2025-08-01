@@ -24,7 +24,7 @@ const ImageGallery = ({ images, currentIndex, isOpen, onClose, onNext, onPreviou
 
   return (
     <Dialog open={isOpen} onOpenChange={onClose}>
-      <DialogContent className="max-w-4xl max-h-[85vh] p-0 bg-black border-none">
+      <DialogContent className="max-w-4xl max-h-[85vh] p-0 bg-transparent border-none backdrop-blur-lg">
         <div className="relative w-full h-full flex items-center justify-center">
           <Button
             variant="ghost"
@@ -60,7 +60,7 @@ const ImageGallery = ({ images, currentIndex, isOpen, onClose, onNext, onPreviou
               <img
                 src={currentImage.src}
                 alt={currentImage.title}
-                className="max-w-full max-h-[70vh] object-contain rounded"
+                className="max-w-full max-h-[70vh] object-contain rounded shadow-2xl"
               />
             </div>
           )}
