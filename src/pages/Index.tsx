@@ -182,34 +182,49 @@ const ClientsSection = () => {
     },
     { 
       id: 2, 
-      title: "Creative Portraits", 
+      title: "Portrait Studio Sessions", 
       client: "Personal Project",
-      src: "/lovable-uploads/15059ab6-8266-45d5-b88b-312ccb05c1a7.png",
+      src: "/lovable-uploads/b7a60df7-e0e9-4d47-8230-6aaf6e48e027.png",
       images: [
-        { id: 8, src: "/lovable-uploads/15059ab6-8266-45d5-b88b-312ccb05c1a7.png", title: "Creative Portrait 1" },
-        { id: 9, src: "/lovable-uploads/a447fd4c-084f-40ed-b666-e920bd3595ef.png", title: "Creative Portrait 2" },
-        { id: 10, src: "/lovable-uploads/9e109dd0-b37d-4a63-9f4c-07d6c37f7b24.png", title: "Creative Portrait 3" },
+        { id: 8, src: "/lovable-uploads/b7a60df7-e0e9-4d47-8230-6aaf6e48e027.png", title: "Studio Portrait 1" },
+        { id: 9, src: "/lovable-uploads/0f349b35-32e2-4fb3-bb06-5e3b06ccc43e.png", title: "Studio Portrait 2" },
+        { id: 10, src: "/lovable-uploads/22cdd75b-25fd-4aec-adf6-9f3e6860a892.png", title: "Studio Portrait 3" },
       ]
     },
     { 
       id: 3, 
-      title: "Fashion Series", 
-      client: "Style Magazine",
-      src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png",
+      title: "Event & Lifestyle", 
+      client: "Creative Documentation",
+      src: "/lovable-uploads/42abf876-d500-459b-8abf-4a77972b4263.png",
       images: [
-        { id: 11, src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png", title: "Fashion Series 1" },
-        { id: 12, src: "/lovable-uploads/1aa6af43-e4ab-46b0-8838-2dc30838e4ea.png", title: "Fashion Series 2" },
-        { id: 13, src: "/lovable-uploads/2b94da22-7da5-4ce5-9007-92f208a95415.png", title: "Fashion Series 3" },
+        { id: 11, src: "/lovable-uploads/42abf876-d500-459b-8abf-4a77972b4263.png", title: "Event Photography 1" },
+        { id: 12, src: "/lovable-uploads/43dc3cd1-ef77-49e0-9751-8a654d1c784f.png", title: "Event Photography 2" },
+        { id: 13, src: "/lovable-uploads/03d0c086-db24-433a-ab39-66817798b7a8.png", title: "Event Photography 3" },
+        { id: 14, src: "/lovable-uploads/c4c47fed-ca17-4705-9228-e31650aec0b3.png", title: "Event Photography 4" },
+        { id: 15, src: "/lovable-uploads/7faa4ba1-2bb1-41bb-bd38-8ebe3b1e9d46.png", title: "Event Photography 5" },
+        { id: 16, src: "/lovable-uploads/420c760d-aaaf-4d39-89df-b8a0a1947eff.png", title: "Event Photography 6" },
+        { id: 17, src: "/lovable-uploads/0455bbbc-12d2-4a85-b4ff-56757e263d62.png", title: "Event Photography 7" },
       ]
     },
     { 
       id: 4, 
+      title: "Fashion Series", 
+      client: "Style Magazine",
+      src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png",
+      images: [
+        { id: 18, src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png", title: "Fashion Series 1" },
+        { id: 19, src: "/lovable-uploads/1aa6af43-e4ab-46b0-8838-2dc30838e4ea.png", title: "Fashion Series 2" },
+        { id: 20, src: "/lovable-uploads/2b94da22-7da5-4ce5-9007-92f208a95415.png", title: "Fashion Series 3" },
+      ]
+    },
+    { 
+      id: 5, 
       title: "Professional Headshots", 
       client: "Corporate Client",
       src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png",
       images: [
-        { id: 14, src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png", title: "Professional Headshot 1" },
-        { id: 15, src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png", title: "Professional Headshot 2" },
+        { id: 21, src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png", title: "Professional Headshot 1" },
+        { id: 22, src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png", title: "Professional Headshot 2" },
       ]
     },
   ];
