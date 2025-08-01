@@ -108,6 +108,16 @@ const PortraitsSection = () => {
       src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png",
       title: "Portrait VII" 
     },
+    { 
+      id: 8, 
+      src: "/lovable-uploads/eaf06115-938c-43ef-8349-aba0f6a59fe5.png",
+      title: "Portrait VIII" 
+    },
+    { 
+      id: 9, 
+      src: "/lovable-uploads/a143bcca-ddaa-4dfc-bfe7-8ec2ea9edf01.png",
+      title: "Portrait IX" 
+    },
   ];
 
   const openGallery = (index: number) => {
@@ -182,6 +192,16 @@ const ClientsSection = () => {
     },
     { 
       id: 2, 
+      title: "Tiger Nut Milk", 
+      client: "Product Photography",
+      src: "/lovable-uploads/a143bcca-ddaa-4dfc-bfe7-8ec2ea9edf01.png",
+      images: [
+        { id: 22, src: "/lovable-uploads/a143bcca-ddaa-4dfc-bfe7-8ec2ea9edf01.png", title: "Tiger Nut Milk Product Shot 1" },
+        { id: 23, src: "/lovable-uploads/f18cd41c-e876-4a4d-827a-0c092c50dd22.png", title: "Tiger Nut Milk Product Shot 2" },
+      ]
+    },
+    { 
+      id: 3, 
       title: "Portrait Studio Sessions", 
       client: "Personal Project",
       src: "/lovable-uploads/b7a60df7-e0e9-4d47-8230-6aaf6e48e027.png",
@@ -192,7 +212,7 @@ const ClientsSection = () => {
       ]
     },
     { 
-      id: 3, 
+      id: 4, 
       title: "Event & Lifestyle", 
       client: "Creative Documentation",
       src: "/lovable-uploads/42abf876-d500-459b-8abf-4a77972b4263.png",
@@ -207,7 +227,7 @@ const ClientsSection = () => {
       ]
     },
     { 
-      id: 4, 
+      id: 5, 
       title: "Fashion Series", 
       client: "Style Magazine",
       src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png",
@@ -218,7 +238,7 @@ const ClientsSection = () => {
       ]
     },
     { 
-      id: 5, 
+      id: 6, 
       title: "Professional Headshots", 
       client: "Corporate Client",
       src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png",
