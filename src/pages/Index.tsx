@@ -8,7 +8,7 @@ const Index = () => {
 
   const tabs = [
     { id: 'portraits', label: 'PORTRAITS' },
-    { id: 'clients', label: 'CLIENT PROJECTS' },
+    { id: 'clients', label: 'PRODUCT PHOTOGRAPHY' },
     { id: 'stories', label: 'VISUAL STORIES' },
     { id: 'info', label: 'INFO + CONTACT' },
   ];
@@ -31,23 +31,23 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="text-center py-8 md:py-12 border-b border-gray-200 px-4">
-        <h1 className="text-2xl md:text-3xl font-light tracking-[0.2em] mb-6 md:mb-8">MAXWELL ANDOH</h1>
+      <header className="text-center py-6 md:py-8 border-b border-gray-200 px-4">
+        <h1 className="text-xl md:text-2xl font-light tracking-[0.2em] mb-4 md:mb-6">MAXWELL ANDOH</h1>
         
         {/* Navigation */}
-        <nav className="flex justify-center flex-wrap gap-4 md:gap-12">
+        <nav className="flex justify-center flex-wrap gap-2 md:gap-8">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`text-xs md:text-sm font-light tracking-wider transition-all duration-300 hover:text-gray-600 relative group px-2 py-1 ${
+              className={`text-xs font-light tracking-wider transition-all duration-300 hover:text-gray-600 relative group px-1 py-1 ${
                 activeTab === tab.id 
                   ? 'text-black' 
                   : 'text-gray-500 hover:text-gray-800'
               }`}
             >
               <span className="whitespace-nowrap">{tab.label}</span>
-              <div className={`absolute bottom-[-8px] left-0 w-full h-0.5 bg-black transform origin-left transition-all duration-300 ${
+              <div className={`absolute bottom-[-6px] left-0 w-full h-0.5 bg-black transform origin-left transition-all duration-300 ${
                 activeTab === tab.id ? 'scale-x-100' : 'scale-x-0 group-hover:scale-x-50'
               }`} />
             </button>
@@ -75,48 +75,38 @@ const PortraitsSection = () => {
   const images = [
     { 
       id: 1, 
-      src: "/lovable-uploads/d2b2498b-fc23-4a42-9c55-405d99785373.png",
+      src: "/lovable-uploads/1764c3ed-2154-465c-a523-e4270a15e96f.png",
       title: "Portrait I" 
     },
     { 
       id: 2, 
-      src: "/lovable-uploads/70a06f4b-e71a-4959-adb2-059fe46a1972.png",
+      src: "/lovable-uploads/73d7bd78-7241-4fb9-bf56-b8045ffb3e73.png",
       title: "Portrait II" 
     },
     { 
       id: 3, 
-      src: "/lovable-uploads/1a5c3f56-b376-4b15-8422-d9d670ee4ce0.png",
+      src: "/lovable-uploads/4f5b6963-004f-4d29-babe-58205ed6882a.png",
       title: "Portrait III" 
     },
     { 
       id: 4, 
-      src: "/lovable-uploads/b348d014-a837-4f08-8ba4-a0291ee68ca4.png",
+      src: "/lovable-uploads/fdc70fed-f854-42ce-9822-1b13f91c417f.png",
       title: "Portrait IV" 
     },
     { 
       id: 5, 
-      src: "/lovable-uploads/a385cd13-20f1-4bfa-8cc5-117599877ad1.png",
+      src: "/lovable-uploads/63045bc9-d8e9-45af-8c9e-4984fb99d16e.png",
       title: "Portrait V" 
     },
     { 
       id: 6, 
-      src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png",
+      src: "/lovable-uploads/b64392d8-4c42-4d33-a18f-818a574c0aeb.png",
       title: "Portrait VI" 
     },
     { 
       id: 7, 
-      src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png",
+      src: "/lovable-uploads/ef8330eb-e897-456e-9798-f9c70d955c75.png",
       title: "Portrait VII" 
-    },
-    { 
-      id: 8, 
-      src: "/lovable-uploads/eaf06115-938c-43ef-8349-aba0f6a59fe5.png",
-      title: "Portrait VIII" 
-    },
-    { 
-      id: 9, 
-      src: "/lovable-uploads/a143bcca-ddaa-4dfc-bfe7-8ec2ea9edf01.png",
-      title: "Portrait IX" 
     },
   ];
 
