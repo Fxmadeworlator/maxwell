@@ -31,16 +31,16 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-white">
       {/* Header */}
-      <header className="text-center py-6 md:py-8 border-b border-gray-200 px-4">
-        <h1 className="text-xl md:text-2xl font-light tracking-[0.2em] mb-4 md:mb-6">MAXWELL ANDOH</h1>
+      <header className="text-center py-4 md:py-6 border-b border-gray-200 px-2">
+        <h1 className="text-lg md:text-2xl font-light tracking-[0.2em] mb-3 md:mb-6">MAXWELL ANDOH</h1>
         
         {/* Navigation */}
-        <nav className="flex justify-center flex-wrap gap-2 md:gap-8">
+        <nav className="flex justify-center flex-wrap gap-1 md:gap-6">
           {tabs.map((tab) => (
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`text-xs font-light tracking-wider transition-all duration-300 hover:text-gray-600 relative group px-1 py-1 ${
+              className={`text-[10px] md:text-xs font-light tracking-wider transition-all duration-300 hover:text-gray-600 relative group px-1 py-1 ${
                 activeTab === tab.id 
                   ? 'text-black' 
                   : 'text-gray-500 hover:text-gray-800'
@@ -75,17 +75,17 @@ const PortraitsSection = () => {
   const images = [
     { 
       id: 1, 
-      src: "/lovable-uploads/73d7bd78-7241-4fb9-bf56-b8045ffb3e73.png",
+      src: "/lovable-uploads/1764c3ed-2154-465c-a523-e4270a15e96f.png",
       title: "Portrait I" 
     },
     { 
       id: 2, 
-      src: "/lovable-uploads/4f5b6963-004f-4d29-babe-58205ed6882a.png",
+      src: "/lovable-uploads/ef8330eb-e897-456e-9798-f9c70d955c75.png",
       title: "Portrait II" 
     },
     { 
       id: 3, 
-      src: "/lovable-uploads/fdc70fed-f854-42ce-9822-1b13f91c417f.png",
+      src: "/lovable-uploads/b64392d8-4c42-4d33-a18f-818a574c0aeb.png",
       title: "Portrait III" 
     },
     { 
@@ -95,17 +95,17 @@ const PortraitsSection = () => {
     },
     { 
       id: 5, 
-      src: "/lovable-uploads/b64392d8-4c42-4d33-a18f-818a574c0aeb.png",
+      src: "/lovable-uploads/fdc70fed-f854-42ce-9822-1b13f91c417f.png",
       title: "Portrait V" 
     },
     { 
       id: 6, 
-      src: "/lovable-uploads/ef8330eb-e897-456e-9798-f9c70d955c75.png",
+      src: "/lovable-uploads/4f5b6963-004f-4d29-babe-58205ed6882a.png",
       title: "Portrait VI" 
     },
     { 
       id: 7, 
-      src: "/lovable-uploads/1764c3ed-2154-465c-a523-e4270a15e96f.png",
+      src: "/lovable-uploads/73d7bd78-7241-4fb9-bf56-b8045ffb3e73.png",
       title: "Portrait VII" 
     },
   ];
