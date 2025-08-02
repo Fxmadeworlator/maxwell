@@ -216,27 +216,6 @@ const ClientsSection = () => {
         { id: 17, src: "/lovable-uploads/0455bbbc-12d2-4a85-b4ff-56757e263d62.png", title: "Event Photography 7" },
       ]
     },
-    { 
-      id: 5, 
-      title: "Fashion Series", 
-      client: "Style Magazine",
-      src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png",
-      images: [
-        { id: 18, src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png", title: "Fashion Series 1" },
-        { id: 19, src: "/lovable-uploads/1aa6af43-e4ab-46b0-8838-2dc30838e4ea.png", title: "Fashion Series 2" },
-        { id: 20, src: "/lovable-uploads/2b94da22-7da5-4ce5-9007-92f208a95415.png", title: "Fashion Series 3" },
-      ]
-    },
-    { 
-      id: 6, 
-      title: "Professional Headshots", 
-      client: "Corporate Client",
-      src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png",
-      images: [
-        { id: 21, src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png", title: "Professional Headshot 1" },
-        { id: 22, src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png", title: "Professional Headshot 2" },
-      ]
-    },
   ];
 
   if (selectedAlbum) {
@@ -285,6 +264,8 @@ const StoriesSection = () => {
         { id: 1, src: "/lovable-uploads/9c28429f-1037-4299-8c7d-d403a1a7dd61.png", title: "Identity Study 1" },
         { id: 2, src: "/lovable-uploads/15059ab6-8266-45d5-b88b-312ccb05c1a7.png", title: "Identity Study 2" },
         { id: 3, src: "/lovable-uploads/a447fd4c-084f-40ed-b666-e920bd3595ef.png", title: "Identity Study 3" },
+        { id: 21, src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png", title: "Professional Headshot 1" },
+        { id: 22, src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png", title: "Professional Headshot 2" },
       ]
     },
     { 
@@ -307,6 +288,17 @@ const StoriesSection = () => {
         { id: 7, src: "/lovable-uploads/a447fd4c-084f-40ed-b666-e920bd3595ef.png", title: "Character Study 1" },
         { id: 8, src: "/lovable-uploads/2b94da22-7da5-4ce5-9007-92f208a95415.png", title: "Character Study 2" },
         { id: 9, src: "/lovable-uploads/1aa6af43-e4ab-46b0-8838-2dc30838e4ea.png", title: "Character Study 3" },
+      ]
+    },
+    { 
+      id: 4, 
+      title: "Fashion Series", 
+      description: "Contemporary fashion photography exploring style and aesthetic expression",
+      src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png",
+      images: [
+        { id: 18, src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png", title: "Fashion Series 1" },
+        { id: 19, src: "/lovable-uploads/1aa6af43-e4ab-46b0-8838-2dc30838e4ea.png", title: "Fashion Series 2" },
+        { id: 20, src: "/lovable-uploads/2b94da22-7da5-4ce5-9007-92f208a95415.png", title: "Fashion Series 3" },
       ]
     },
   ];
