@@ -214,12 +214,9 @@ const ClientsSection = () => {
         { id: 15, src: "/lovable-uploads/7faa4ba1-2bb1-41bb-bd38-8ebe3b1e9d46.png", title: "Event Photography 5" },
         { id: 16, src: "/lovable-uploads/420c760d-aaaf-4d39-89df-b8a0a1947eff.png", title: "Event Photography 6" },
         { id: 17, src: "/lovable-uploads/0455bbbc-12d2-4a85-b4ff-56757e263d62.png", title: "Event Photography 7" },
-        { id: 18, src: "/lovable-uploads/e5612a9c-e061-4be2-93ed-a0e178ac21b7.png", title: "Event Photography 8" },
-        { id: 19, src: "/lovable-uploads/efd838a4-456a-4a58-9843-345720dd518f.png", title: "Event Photography 9" },
-        { id: 20, src: "/lovable-uploads/49408b0c-4555-4797-97d6-2facfd2da4af.png", title: "Event Photography 10" },
-        { id: 21, src: "/lovable-uploads/b392fba3-f3d3-4c73-93fa-a59d04033c9b.png", title: "Event Photography 11" },
-        { id: 22, src: "/lovable-uploads/d1ea40af-7fdf-4361-b3ba-179ad0089df6.png", title: "Event Photography 12" },
-        { id: 23, src: "/lovable-uploads/d7d22069-1c3f-4d35-bf65-332664f54a6f.png", title: "Event Photography 13" },
+        { id: 18, src: "/lovable-uploads/aa83cffb-abf9-40e0-b9e5-f1557779fd00.png", title: "Event Photography 8" },
+        { id: 19, src: "/lovable-uploads/02c67dc0-e294-4cc5-966d-c6f1fa34dd46.png", title: "Event Photography 9" },
+        { id: 20, src: "/lovable-uploads/ad2f4587-b4d5-4fd8-9d0d-fbe89065d891.png", title: "Event Photography 10" },
       ]
     },
   ];
