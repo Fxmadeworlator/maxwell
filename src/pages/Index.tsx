@@ -75,33 +75,38 @@ const PortraitsSection = () => {
   const images = [
     { 
       id: 1, 
-      src: "/lovable-uploads/d7d22069-1c3f-4d35-bf65-332664f54a6f.png",
+      src: "/lovable-uploads/d73637a2-9852-4f84-a42f-fb2b40d4e630.png",
       title: "Portrait I" 
     },
     { 
       id: 2, 
-      src: "/lovable-uploads/e5612a9c-e061-4be2-93ed-a0e178ac21b7.png",
+      src: "/lovable-uploads/471bdedf-ac38-4a88-ab88-faa5ef9ac50c.png",
       title: "Portrait II" 
     },
     { 
       id: 3, 
-      src: "/lovable-uploads/efd838a4-456a-4a58-9843-345720dd518f.png",
+      src: "/lovable-uploads/bb557b56-eda2-4e92-a8af-4a82b3b0c9c6.png",
       title: "Portrait III" 
     },
     { 
       id: 4, 
-      src: "/lovable-uploads/49408b0c-4555-4797-97d6-2facfd2da4af.png",
+      src: "/lovable-uploads/68175bff-3287-4dee-ba18-cee5c9bcb541.png",
       title: "Portrait IV" 
     },
     { 
       id: 5, 
-      src: "/lovable-uploads/b392fba3-f3d3-4c73-93fa-a59d04033c9b.png",
+      src: "/lovable-uploads/ffde38c0-41a1-4343-aafd-2c44ddcdbea3.png",
       title: "Portrait V" 
     },
     { 
       id: 6, 
-      src: "/lovable-uploads/d1ea40af-7fdf-4361-b3ba-179ad0089df6.png",
+      src: "/lovable-uploads/bf9821ea-c4ce-41fe-9b68-972670f8f701.png",
       title: "Portrait VI" 
+    },
+    { 
+      id: 7, 
+      src: "/lovable-uploads/8aa961a6-241a-46b3-b079-7125b7c60c9b.png",
+      title: "Portrait VII" 
     },
   ];
 
