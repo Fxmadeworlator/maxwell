@@ -214,6 +214,12 @@ const ClientsSection = () => {
         { id: 15, src: "/lovable-uploads/7faa4ba1-2bb1-41bb-bd38-8ebe3b1e9d46.png", title: "Event Photography 5" },
         { id: 16, src: "/lovable-uploads/420c760d-aaaf-4d39-89df-b8a0a1947eff.png", title: "Event Photography 6" },
         { id: 17, src: "/lovable-uploads/0455bbbc-12d2-4a85-b4ff-56757e263d62.png", title: "Event Photography 7" },
+        { id: 18, src: "/lovable-uploads/e5612a9c-e061-4be2-93ed-a0e178ac21b7.png", title: "Event Photography 8" },
+        { id: 19, src: "/lovable-uploads/efd838a4-456a-4a58-9843-345720dd518f.png", title: "Event Photography 9" },
+        { id: 20, src: "/lovable-uploads/49408b0c-4555-4797-97d6-2facfd2da4af.png", title: "Event Photography 10" },
+        { id: 21, src: "/lovable-uploads/b392fba3-f3d3-4c73-93fa-a59d04033c9b.png", title: "Event Photography 11" },
+        { id: 22, src: "/lovable-uploads/d1ea40af-7fdf-4361-b3ba-179ad0089df6.png", title: "Event Photography 12" },
+        { id: 23, src: "/lovable-uploads/d7d22069-1c3f-4d35-bf65-332664f54a6f.png", title: "Event Photography 13" },
       ]
     },
   ];
@@ -258,29 +264,19 @@ const StoriesSection = () => {
     { 
       id: 1, 
       title: "Identity & Expression", 
-      description: "Contemporary portraiture exploring personal identity and creative expression",
+      description: "Contemporary portraiture exploring personal identity, creative expression, mood and atmospheric techniques",
       src: "/lovable-uploads/9c28429f-1037-4299-8c7d-d403a1a7dd61.png",
       images: [
         { id: 1, src: "/lovable-uploads/9c28429f-1037-4299-8c7d-d403a1a7dd61.png", title: "Identity Study 1" },
         { id: 2, src: "/lovable-uploads/15059ab6-8266-45d5-b88b-312ccb05c1a7.png", title: "Identity Study 2" },
         { id: 3, src: "/lovable-uploads/a447fd4c-084f-40ed-b666-e920bd3595ef.png", title: "Identity Study 3" },
-        { id: 21, src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png", title: "Professional Headshot 1" },
-        { id: 22, src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png", title: "Professional Headshot 2" },
-      ]
-    },
-    { 
-      id: 2, 
-      title: "Mood & Atmosphere", 
-      description: "Exploring dramatic lighting and atmospheric techniques in portrait photography",
-      src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png",
-      images: [
         { id: 4, src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png", title: "Mood Study 1" },
         { id: 5, src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png", title: "Mood Study 2" },
         { id: 6, src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png", title: "Mood Study 3" },
       ]
     },
     { 
-      id: 3, 
+      id: 2, 
       title: "Character & Style", 
       description: "Contemporary portraiture that captures personality and individual style",
       src: "/lovable-uploads/a447fd4c-084f-40ed-b666-e920bd3595ef.png",
@@ -291,7 +287,7 @@ const StoriesSection = () => {
       ]
     },
     { 
-      id: 4, 
+      id: 3, 
       title: "Fashion Series", 
       description: "Contemporary fashion photography exploring style and aesthetic expression",
       src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png",
