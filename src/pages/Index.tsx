@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import ImageGallery from "@/components/ImageGallery";
@@ -190,35 +191,6 @@ const ClientsSection = () => {
         { id: 23, src: "/lovable-uploads/f18cd41c-e876-4a4d-827a-0c092c50dd22.png", title: "Tiger Nut Milk Product Shot 2" },
       ]
     },
-    { 
-      id: 3, 
-      title: "Portrait Studio Sessions", 
-      client: "Personal Project",
-      src: "/lovable-uploads/b7a60df7-e0e9-4d47-8230-6aaf6e48e027.png",
-      images: [
-        { id: 8, src: "/lovable-uploads/b7a60df7-e0e9-4d47-8230-6aaf6e48e027.png", title: "Studio Portrait 1" },
-        { id: 9, src: "/lovable-uploads/0f349b35-32e2-4fb3-bb06-5e3b06ccc43e.png", title: "Studio Portrait 2" },
-        { id: 10, src: "/lovable-uploads/22cdd75b-25fd-4aec-adf6-9f3e6860a892.png", title: "Studio Portrait 3" },
-      ]
-    },
-    { 
-      id: 4, 
-      title: "Event & Lifestyle", 
-      client: "Creative Documentation",
-      src: "/lovable-uploads/42abf876-d500-459b-8abf-4a77972b4263.png",
-      images: [
-        { id: 11, src: "/lovable-uploads/42abf876-d500-459b-8abf-4a77972b4263.png", title: "Event Photography 1" },
-        { id: 12, src: "/lovable-uploads/43dc3cd1-ef77-49e0-9751-8a654d1c784f.png", title: "Event Photography 2" },
-        { id: 13, src: "/lovable-uploads/03d0c086-db24-433a-ab39-66817798b7a8.png", title: "Event Photography 3" },
-        { id: 14, src: "/lovable-uploads/c4c47fed-ca17-4705-9228-e31650aec0b3.png", title: "Event Photography 4" },
-        { id: 15, src: "/lovable-uploads/7faa4ba1-2bb1-41bb-bd38-8ebe3b1e9d46.png", title: "Event Photography 5" },
-        { id: 16, src: "/lovable-uploads/420c760d-aaaf-4d39-89df-b8a0a1947eff.png", title: "Event Photography 6" },
-        { id: 17, src: "/lovable-uploads/0455bbbc-12d2-4a85-b4ff-56757e263d62.png", title: "Event Photography 7" },
-        { id: 18, src: "/lovable-uploads/aa83cffb-abf9-40e0-b9e5-f1557779fd00.png", title: "Event Photography 8" },
-        { id: 19, src: "/lovable-uploads/02c67dc0-e294-4cc5-966d-c6f1fa34dd46.png", title: "Event Photography 9" },
-        { id: 20, src: "/lovable-uploads/ad2f4587-b4d5-4fd8-9d0d-fbe89065d891.png", title: "Event Photography 10" },
-      ]
-    },
   ];
 
   if (selectedAlbum) {
@@ -262,25 +234,30 @@ const StoriesSection = () => {
       id: 1, 
       title: "Identity & Expression", 
       description: "Contemporary portraiture exploring personal identity, creative expression, mood and atmospheric techniques",
-      src: "/lovable-uploads/9c28429f-1037-4299-8c7d-d403a1a7dd61.png",
+      src: "/lovable-uploads/1425c555-f5bd-4810-b12b-0a7ae262c9e0.png",
       images: [
-        { id: 1, src: "/lovable-uploads/9c28429f-1037-4299-8c7d-d403a1a7dd61.png", title: "Identity Study 1" },
-        { id: 2, src: "/lovable-uploads/15059ab6-8266-45d5-b88b-312ccb05c1a7.png", title: "Identity Study 2" },
-        { id: 3, src: "/lovable-uploads/a447fd4c-084f-40ed-b666-e920bd3595ef.png", title: "Identity Study 3" },
-        { id: 4, src: "/lovable-uploads/7cb5b9f0-b410-45d9-af08-0dfff7aed012.png", title: "Mood Study 1" },
-        { id: 5, src: "/lovable-uploads/5c566acc-db00-4142-9d10-45fb2f698421.png", title: "Mood Study 2" },
-        { id: 6, src: "/lovable-uploads/e86d93aa-4f83-4f81-a11a-c9af1794f149.png", title: "Mood Study 3" },
+        { id: 1, src: "/lovable-uploads/1425c555-f5bd-4810-b12b-0a7ae262c9e0.png", title: "Identity Study 1" },
+        { id: 2, src: "/lovable-uploads/c824ce4f-7128-4f15-b4e7-0962e769c0f7.png", title: "Identity Study 2" },
+        { id: 3, src: "/lovable-uploads/63359f51-6517-4e6b-8605-8f2bd1a5b1a4.png", title: "Identity Study 3" },
+        { id: 4, src: "/lovable-uploads/0946535d-a4b2-489b-8993-e454c8800754.png", title: "Identity Study 4" },
       ]
     },
     { 
       id: 2, 
-      title: "Character & Style", 
-      description: "Contemporary portraiture that captures personality and individual style",
-      src: "/lovable-uploads/a447fd4c-084f-40ed-b666-e920bd3595ef.png",
+      title: "Event & Lifestyle", 
+      description: "Creative documentation of events and lifestyle moments",
+      src: "/lovable-uploads/42abf876-d500-459b-8abf-4a77972b4263.png",
       images: [
-        { id: 7, src: "/lovable-uploads/a447fd4c-084f-40ed-b666-e920bd3595ef.png", title: "Character Study 1" },
-        { id: 8, src: "/lovable-uploads/2b94da22-7da5-4ce5-9007-92f208a95415.png", title: "Character Study 2" },
-        { id: 9, src: "/lovable-uploads/1aa6af43-e4ab-46b0-8838-2dc30838e4ea.png", title: "Character Study 3" },
+        { id: 11, src: "/lovable-uploads/42abf876-d500-459b-8abf-4a77972b4263.png", title: "Event Photography 1" },
+        { id: 12, src: "/lovable-uploads/43dc3cd1-ef77-49e0-9751-8a654d1c784f.png", title: "Event Photography 2" },
+        { id: 13, src: "/lovable-uploads/03d0c086-db24-433a-ab39-66817798b7a8.png", title: "Event Photography 3" },
+        { id: 14, src: "/lovable-uploads/c4c47fed-ca17-4705-9228-e31650aec0b3.png", title: "Event Photography 4" },
+        { id: 15, src: "/lovable-uploads/7faa4ba1-2bb1-41bb-bd38-8ebe3b1e9d46.png", title: "Event Photography 5" },
+        { id: 16, src: "/lovable-uploads/420c760d-aaaf-4d39-89df-b8a0a1947eff.png", title: "Event Photography 6" },
+        { id: 17, src: "/lovable-uploads/0455bbbc-12d2-4a85-b4ff-56757e263d62.png", title: "Event Photography 7" },
+        { id: 18, src: "/lovable-uploads/aa83cffb-abf9-40e0-b9e5-f1557779fd00.png", title: "Event Photography 8" },
+        { id: 19, src: "/lovable-uploads/02c67dc0-e294-4cc5-966d-c6f1fa34dd46.png", title: "Event Photography 9" },
+        { id: 20, src: "/lovable-uploads/ad2f4587-b4d5-4fd8-9d0d-fbe89065d891.png", title: "Event Photography 10" },
       ]
     },
     { 
