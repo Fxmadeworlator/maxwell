@@ -1,11 +1,42 @@
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Button } from "@/components/ui/button";
 import ImageGallery from "@/components/ImageGallery";
 import AlbumView from "@/components/AlbumView";
+import { supabase } from "@/integrations/supabase/client";
+import { useNavigate } from "react-router-dom";
 
 const Index = () => {
   const [activeTab, setActiveTab] = useState('portraits');
+  const [isAdmin, setIsAdmin] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const checkAdminStatus = async () => {
+      const { data: { session } } = await supabase.auth.getSession();
+      
+      if (session?.user) {
+        const { data: roleData } = await supabase
+          .from('user_roles')
+          .select('role')
+          .eq('user_id', session.user.id)
+          .eq('role', 'admin')
+          .single();
+        
+        setIsAdmin(!!roleData);
+      } else {
+        setIsAdmin(false);
+      }
+    };
+
+    checkAdminStatus();
+
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(() => {
+      checkAdminStatus();
+    });
+
+    return () => subscription.unsubscribe();
+  }, []);
 
   const tabs = [
     { id: 'portraits', label: 'PORTRAITS' },
@@ -53,6 +84,15 @@ const Index = () => {
               }`} />
             </button>
           ))}
+          {isAdmin && (
+            <button
+              onClick={() => navigate('/admin')}
+              className="text-[10px] md:text-xs font-light tracking-wider transition-all duration-300 hover:text-gray-600 relative group px-1 py-1 text-gray-500 hover:text-gray-800"
+            >
+              <span className="whitespace-nowrap">ADMIN</span>
+              <div className="absolute bottom-[-6px] left-0 w-full h-0.5 bg-black transform origin-left transition-all duration-300 scale-x-0 group-hover:scale-x-50" />
+            </button>
+          )}
         </nav>
       </header>
 
