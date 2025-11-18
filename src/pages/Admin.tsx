@@ -3,11 +3,10 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, LogOut, Upload } from "lucide-react";
+import { LogOut } from "lucide-react";
 import ImageUploadForm from "@/components/admin/ImageUploadForm";
-import BulkUploadForm from "@/components/admin/BulkUploadForm";
+import CollectionManager from "@/components/admin/CollectionManager";
 import ImageGalleryManager from "@/components/admin/ImageGalleryManager";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Admin = () => {
   const navigate = useNavigate();
@@ -92,25 +91,9 @@ const Admin = () => {
       </header>
 
       <main className="container mx-auto px-4 py-8">
-        <div className="mb-8">
-          <Tabs defaultValue="single" className="w-full">
-            <TabsList className="grid w-full max-w-md grid-cols-2">
-              <TabsTrigger value="single">
-                <Plus className="w-4 h-4 mr-2" />
-                Single Upload
-              </TabsTrigger>
-              <TabsTrigger value="bulk">
-                <Upload className="w-4 h-4 mr-2" />
-                Bulk Upload
-              </TabsTrigger>
-            </TabsList>
-            <TabsContent value="single" className="mt-6">
-              <ImageUploadForm onSuccess={() => {}} />
-            </TabsContent>
-            <TabsContent value="bulk" className="mt-6">
-              <BulkUploadForm onSuccess={() => {}} />
-            </TabsContent>
-          </Tabs>
+        <div className="grid gap-8 mb-8">
+          <ImageUploadForm onSuccess={() => {}} />
+          <CollectionManager />
         </div>
 
         <ImageGalleryManager />
