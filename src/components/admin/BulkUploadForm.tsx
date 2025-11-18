@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
@@ -17,6 +18,7 @@ const BulkUploadForm = ({ onSuccess }: BulkUploadFormProps) => {
   const [collections, setCollections] = useState<any[]>([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedCollection, setSelectedCollection] = useState("");
+  const [newCollectionName, setNewCollectionName] = useState("");
   const [files, setFiles] = useState<File[]>([]);
   const [uploading, setUploading] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -69,6 +71,22 @@ const BulkUploadForm = ({ onSuccess }: BulkUploadFormProps) => {
     setProgress(0);
 
     try {
+      // Create new collection if needed
+      let collectionId = selectedCollection;
+      if (categoryRequiresCollection && newCollectionName && !selectedCollection) {
+        const { data: newCollection, error: collectionError } = await supabase
+          .from("collections")
+          .insert({
+            name: newCollectionName,
+            category_id: selectedCategory,
+          })
+          .select()
+          .single();
+
+        if (collectionError) throw collectionError;
+        collectionId = newCollection.id;
+      }
+
       const totalFiles = files.length;
       let uploadedCount = 0;
 
@@ -89,7 +107,7 @@ const BulkUploadForm = ({ onSuccess }: BulkUploadFormProps) => {
 
         const { error: insertError } = await supabase.from("images").insert({
           category_id: selectedCategory,
-          collection_id: selectedCollection || null,
+          collection_id: collectionId || null,
           title: file.name.replace(/\.[^/.]+$/, ""),
           image_url: publicUrl,
         });
@@ -108,6 +126,7 @@ const BulkUploadForm = ({ onSuccess }: BulkUploadFormProps) => {
       setFiles([]);
       setSelectedCategory("");
       setSelectedCollection("");
+      setNewCollectionName("");
       onSuccess();
     } catch (error: any) {
       toast({
@@ -145,28 +164,45 @@ const BulkUploadForm = ({ onSuccess }: BulkUploadFormProps) => {
           </Select>
         </div>
 
-        {collections.length > 0 && (
-          <div>
-            <Label htmlFor="bulk-collection">
-              Collection {categoryRequiresCollection && "*"}
-            </Label>
-            <Select value={selectedCollection} onValueChange={setSelectedCollection}>
-              <SelectTrigger id="bulk-collection">
-                <SelectValue placeholder="Select or create collection" />
-              </SelectTrigger>
-              <SelectContent>
-                {collections.map((col) => (
-                  <SelectItem key={col.id} value={col.id}>
-                    {col.name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            {categoryRequiresCollection && (
+        {categoryRequiresCollection && (
+          <div className="space-y-4">
+            {collections.length > 0 && (
+              <div>
+                <Label htmlFor="bulk-collection">Select Existing Collection</Label>
+                <Select value={selectedCollection} onValueChange={setSelectedCollection}>
+                  <SelectTrigger id="bulk-collection">
+                    <SelectValue placeholder="Select a collection" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {collections.map((col) => (
+                      <SelectItem key={col.id} value={col.id}>
+                        {col.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            )}
+            
+            <div>
+              <Label htmlFor="new-collection">
+                {collections.length > 0 ? "Or Create New Collection" : "Create New Collection *"}
+              </Label>
+              <Input
+                id="new-collection"
+                type="text"
+                placeholder="Enter collection name"
+                value={newCollectionName}
+                onChange={(e) => {
+                  setNewCollectionName(e.target.value);
+                  if (e.target.value) setSelectedCollection("");
+                }}
+                disabled={uploading}
+              />
               <p className="text-sm text-muted-foreground mt-1">
                 All images will be grouped in this collection
               </p>
-            )}
+            </div>
           </div>
         )}
 
@@ -233,7 +269,7 @@ const BulkUploadForm = ({ onSuccess }: BulkUploadFormProps) => {
           uploading || 
           files.length === 0 || 
           !selectedCategory ||
-          (categoryRequiresCollection && !selectedCollection)
+          (categoryRequiresCollection && !selectedCollection && !newCollectionName)
         }
         className="w-full"
       >
