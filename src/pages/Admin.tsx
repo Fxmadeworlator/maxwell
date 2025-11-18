@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import { useToast } from "@/hooks/use-toast";
-import { Plus, LogOut } from "lucide-react";
+import { Plus, LogOut, Upload } from "lucide-react";
 import ImageUploadForm from "@/components/admin/ImageUploadForm";
+import BulkUploadForm from "@/components/admin/BulkUploadForm";
 import ImageGalleryManager from "@/components/admin/ImageGalleryManager";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Admin = () => {
   const navigate = useNavigate();
@@ -13,7 +15,6 @@ const Admin = () => {
   const [user, setUser] = useState<any>(null);
   const [isAdmin, setIsAdmin] = useState(false);
   const [loading, setLoading] = useState(true);
-  const [showUploadForm, setShowUploadForm] = useState(false);
 
   useEffect(() => {
     checkAuth();
@@ -92,17 +93,25 @@ const Admin = () => {
 
       <main className="container mx-auto px-4 py-8">
         <div className="mb-8">
-          <Button onClick={() => setShowUploadForm(!showUploadForm)} size="lg">
-            <Plus className="w-5 h-5 mr-2" />
-            {showUploadForm ? "Hide Upload Form" : "Upload Image"}
-          </Button>
+          <Tabs defaultValue="single" className="w-full">
+            <TabsList className="grid w-full max-w-md grid-cols-2">
+              <TabsTrigger value="single">
+                <Plus className="w-4 h-4 mr-2" />
+                Single Upload
+              </TabsTrigger>
+              <TabsTrigger value="bulk">
+                <Upload className="w-4 h-4 mr-2" />
+                Bulk Upload
+              </TabsTrigger>
+            </TabsList>
+            <TabsContent value="single" className="mt-6">
+              <ImageUploadForm onSuccess={() => {}} />
+            </TabsContent>
+            <TabsContent value="bulk" className="mt-6">
+              <BulkUploadForm onSuccess={() => {}} />
+            </TabsContent>
+          </Tabs>
         </div>
-
-        {showUploadForm && (
-          <div className="mb-8">
-            <ImageUploadForm onSuccess={() => setShowUploadForm(false)} />
-          </div>
-        )}
 
         <ImageGalleryManager />
       </main>
