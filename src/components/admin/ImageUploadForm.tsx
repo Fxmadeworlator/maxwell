@@ -5,7 +5,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
-import { Upload } from "lucide-react";
+import { Upload, X } from "lucide-react";
+import { Progress } from "@/components/ui/progress";
 
 interface ImageUploadFormProps {
   onSuccess: () => void;
@@ -18,9 +19,9 @@ const ImageUploadForm = ({ onSuccess }: ImageUploadFormProps) => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedCollection, setSelectedCollection] = useState("");
   const [newCollectionName, setNewCollectionName] = useState("");
-  const [title, setTitle] = useState("");
-  const [file, setFile] = useState<File | null>(null);
+  const [files, setFiles] = useState<File[]>([]);
   const [uploading, setUploading] = useState(false);
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
     loadCategories();
@@ -54,12 +55,11 @@ const ImageUploadForm = ({ onSuccess }: ImageUploadFormProps) => {
 
   const handleUpload = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!file || !selectedCategory) return;
+    if (files.length === 0 || !selectedCategory) return;
 
     const categoryRequiresCollection = selectedCategory && 
       categories.find(c => c.id === selectedCategory)?.slug !== 'portraits';
 
-    setUploading(true);
     try {
       // Create new collection if needed
       let collectionId = selectedCollection;
@@ -77,32 +77,42 @@ const ImageUploadForm = ({ onSuccess }: ImageUploadFormProps) => {
         collectionId = newCollection.id;
       }
 
-      const fileExt = file.name.split(".").pop();
-      const fileName = `${Math.random()}.${fileExt}`;
-      const filePath = `${fileName}`;
+      const totalFiles = files.length;
+      let uploadedCount = 0;
 
-      const { error: uploadError } = await supabase.storage
-        .from("portfolio-images")
-        .upload(filePath, file);
+      for (const file of files) {
+        const fileExt = file.name.split(".").pop();
+        const fileName = `${Math.random()}.${fileExt}`;
+        const filePath = `${fileName}`;
 
-      if (uploadError) throw uploadError;
+        const { error: uploadError } = await supabase.storage
+          .from("portfolio-images")
+          .upload(filePath, file);
 
-      const { data: { publicUrl } } = supabase.storage
-        .from("portfolio-images")
-        .getPublicUrl(filePath);
+        if (uploadError) throw uploadError;
 
-      const { error: insertError } = await supabase.from("images").insert({
-        category_id: selectedCategory,
-        collection_id: collectionId || null,
-        title: title || file.name,
-        image_url: publicUrl,
+        const { data: { publicUrl } } = supabase.storage
+          .from("portfolio-images")
+          .getPublicUrl(filePath);
+
+        const { error: insertError } = await supabase.from("images").insert({
+          category_id: selectedCategory,
+          collection_id: collectionId || null,
+          title: file.name.replace(/\.[^/.]+$/, ""),
+          image_url: publicUrl,
+        });
+
+        if (insertError) throw insertError;
+
+        uploadedCount++;
+        setProgress((uploadedCount / totalFiles) * 100);
+      }
+
+      toast({ 
+        title: "Success!", 
+        description: `${totalFiles} image${totalFiles !== 1 ? 's' : ''} uploaded successfully.` 
       });
-
-      if (insertError) throw insertError;
-
-      toast({ title: "Image uploaded successfully!" });
-      setTitle("");
-      setFile(null);
+      setFiles([]);
       setSelectedCategory("");
       setSelectedCollection("");
       setNewCollectionName("");
@@ -115,12 +125,20 @@ const ImageUploadForm = ({ onSuccess }: ImageUploadFormProps) => {
       });
     } finally {
       setUploading(false);
+      setProgress(0);
     }
   };
 
+  const removeFile = (index: number) => {
+    setFiles(files.filter((_, i) => i !== index));
+  };
+
+  const categoryRequiresCollection = selectedCategory && 
+    categories.find(c => c.id === selectedCategory)?.slug !== 'portraits';
+
   return (
     <form onSubmit={handleUpload} className="space-y-6 bg-card p-6 rounded-lg border border-border">
-      <h2 className="text-xl font-semibold">Upload New Image</h2>
+      <h2 className="text-xl font-semibold">Upload Images</h2>
 
       <div className="space-y-4">
         <div>
@@ -179,30 +197,74 @@ const ImageUploadForm = ({ onSuccess }: ImageUploadFormProps) => {
         )}
 
         <div>
-          <Label htmlFor="title">Title (Optional)</Label>
-          <Input
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="Image title"
+          <Label htmlFor="files">Select Images *</Label>
+          <input
+            id="files"
+            type="file"
+            multiple
+            accept="image/*"
+            onChange={(e) => e.target.files && setFiles(Array.from(e.target.files))}
+            className="mt-1 block w-full text-sm text-foreground
+              file:mr-4 file:py-2 file:px-4
+              file:rounded-md file:border-0
+              file:text-sm file:font-semibold
+              file:bg-primary file:text-primary-foreground
+              hover:file:bg-primary/90
+              cursor-pointer"
           />
+          <p className="text-sm text-muted-foreground mt-1">
+            Select one or multiple images to upload
+          </p>
         </div>
 
-        <div>
-          <Label htmlFor="file">Image File *</Label>
-          <Input
-            id="file"
-            type="file"
-            accept="image/*"
-            onChange={(e) => setFile(e.target.files?.[0] || null)}
-            required
-          />
-        </div>
+        {files.length > 0 && (
+          <div className="space-y-2">
+            <Label>Selected Files ({files.length})</Label>
+            <div className="max-h-48 overflow-y-auto space-y-2">
+              {files.map((file, index) => (
+                <div
+                  key={index}
+                  className="flex items-center justify-between p-2 bg-background rounded border border-border"
+                >
+                  <span className="text-sm truncate flex-1">{file.name}</span>
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    size="sm"
+                    onClick={() => removeFile(index)}
+                    disabled={uploading}
+                  >
+                    <X className="w-4 h-4" />
+                  </Button>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {uploading && (
+          <div className="space-y-2">
+            <Label>Upload Progress</Label>
+            <Progress value={progress} />
+            <p className="text-sm text-muted-foreground">
+              Uploading... {Math.round(progress)}%
+            </p>
+          </div>
+        )}
       </div>
 
-      <Button type="submit" disabled={uploading || !file || !selectedCategory}>
+      <Button 
+        type="submit" 
+        disabled={
+          uploading || 
+          files.length === 0 || 
+          !selectedCategory ||
+          (categoryRequiresCollection && !selectedCollection && !newCollectionName)
+        } 
+        className="w-full"
+      >
         <Upload className="w-4 h-4 mr-2" />
-        {uploading ? "Uploading..." : "Upload Image"}
+        {uploading ? "Uploading..." : `Upload ${files.length} Image${files.length !== 1 ? 's' : ''}`}
       </Button>
     </form>
   );
