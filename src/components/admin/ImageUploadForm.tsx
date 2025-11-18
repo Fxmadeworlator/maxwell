@@ -17,6 +17,7 @@ const ImageUploadForm = ({ onSuccess }: ImageUploadFormProps) => {
   const [collections, setCollections] = useState<any[]>([]);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedCollection, setSelectedCollection] = useState("");
+  const [newCollectionName, setNewCollectionName] = useState("");
   const [title, setTitle] = useState("");
   const [file, setFile] = useState<File | null>(null);
   const [uploading, setUploading] = useState(false);
@@ -55,8 +56,27 @@ const ImageUploadForm = ({ onSuccess }: ImageUploadFormProps) => {
     e.preventDefault();
     if (!file || !selectedCategory) return;
 
+    const categoryRequiresCollection = selectedCategory && 
+      categories.find(c => c.id === selectedCategory)?.slug !== 'portraits';
+
     setUploading(true);
     try {
+      // Create new collection if needed
+      let collectionId = selectedCollection;
+      if (categoryRequiresCollection && newCollectionName && !selectedCollection) {
+        const { data: newCollection, error: collectionError } = await supabase
+          .from("collections")
+          .insert({
+            name: newCollectionName,
+            category_id: selectedCategory,
+          })
+          .select()
+          .single();
+
+        if (collectionError) throw collectionError;
+        collectionId = newCollection.id;
+      }
+
       const fileExt = file.name.split(".").pop();
       const fileName = `${Math.random()}.${fileExt}`;
       const filePath = `${fileName}`;
@@ -73,7 +93,7 @@ const ImageUploadForm = ({ onSuccess }: ImageUploadFormProps) => {
 
       const { error: insertError } = await supabase.from("images").insert({
         category_id: selectedCategory,
-        collection_id: selectedCollection || null,
+        collection_id: collectionId || null,
         title: title || file.name,
         image_url: publicUrl,
       });
@@ -85,6 +105,7 @@ const ImageUploadForm = ({ onSuccess }: ImageUploadFormProps) => {
       setFile(null);
       setSelectedCategory("");
       setSelectedCollection("");
+      setNewCollectionName("");
       onSuccess();
     } catch (error: any) {
       toast({
@@ -118,22 +139,42 @@ const ImageUploadForm = ({ onSuccess }: ImageUploadFormProps) => {
           </Select>
         </div>
 
-        {collections.length > 0 && (
-          <div>
-            <Label htmlFor="collection">Collection (Optional)</Label>
-            <Select value={selectedCollection} onValueChange={setSelectedCollection}>
-              <SelectTrigger id="collection">
-                <SelectValue placeholder="Select collection" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="">None (main gallery)</SelectItem>
-                {collections.map((col) => (
-                  <SelectItem key={col.id} value={col.id}>
-                    {col.name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+        {selectedCategory && categories.find(c => c.id === selectedCategory)?.slug !== 'portraits' && (
+          <div className="space-y-4">
+            {collections.length > 0 && (
+              <div>
+                <Label htmlFor="collection">Select Existing Collection</Label>
+                <Select value={selectedCollection} onValueChange={setSelectedCollection}>
+                  <SelectTrigger id="collection">
+                    <SelectValue placeholder="Select a collection" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {collections.map((col) => (
+                      <SelectItem key={col.id} value={col.id}>
+                        {col.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+            )}
+            
+            <div>
+              <Label htmlFor="new-collection-single">
+                {collections.length > 0 ? "Or Create New Collection" : "Create New Collection *"}
+              </Label>
+              <Input
+                id="new-collection-single"
+                type="text"
+                placeholder="Enter collection name"
+                value={newCollectionName}
+                onChange={(e) => {
+                  setNewCollectionName(e.target.value);
+                  if (e.target.value) setSelectedCollection("");
+                }}
+                disabled={uploading}
+              />
+            </div>
           </div>
         )}
 
